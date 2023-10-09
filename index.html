@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <title>Todo-list</title>
+</head>
+<body>
+<nav>
+    <div class="nav-center">
+    <h1>TO DO LIST</h1>
+    <p>"Your to-do list is like a compass, it points you in the direction of productivity and helps you chart a course towards your goals "</p>
+    </div>
+</nav>
+<section class="main">
+    <section class="container">
+    <section class="todo">
+    <form id="new-todo-form">
+        <h3>Enter the tasks that you want to achieve</h3>
+        <input class="taskinput" type="text" placeholder="e.g. practice Javascript" >
+        <h3>Pick a category</h3>
+        <div class="options">
+            <label>
+                <input type="radio" name="category" id="category1" value="business" /> 
+                <span class="bubble business"></span>
+                <div>Business</div>
+            </label>
+            <label>
+                <input type="radio" name="category" id="category2" value="personal" />
+                <span class="bubble personal"></span>
+                <div>Personal</div>
+            </label>
+        </div>
+        <input class="button" type="submit" value="Add todo" />
+    </form>
+</section>
+<section class="list">
+    <div class="list" id="todo-list">
+        <ul>
+            <li>Go to sport</li>
+            <li>Study</li>
+            <li>do other stuff</li>
+            <li>that one too </li>
+        </ul>
+    </div>
+</section>
+</section>
+</section>
+<script src="./script.js"></script>
+</body>
+</html>
