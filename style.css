@@ -5,6 +5,11 @@
     font-family: 'Noto Sans', sans-serif;
 }
 
+nav {
+    background : linear-gradient(135deg, #ffffff, #e3e3e3);
+    display: flex;
+}
+
 .nav-center {
     display: flex;
     flex-direction: column;
@@ -12,8 +17,20 @@
     align-items: center;
     gap: 0.5rem;
     background: linear-gradient(135deg, #ffffff, #e3e3e3);
-    padding: 10px;
+    padding: 16px;
     color: black;
+    width: 95%;
+}
+
+.nav-right {
+    width: 2%;
+    margin-top: 2rem;
+}
+
+
+.nav-center p {
+    margin-bottom: 1rem;
+
 }
 
 .main {
@@ -24,7 +41,17 @@
     justify-content: center; 
     align-items: center; 
     height: 100vh;
-  flex-direction: column;
+    flex-direction: column;
+}
+
+.main.darkmode {
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    flex-direction: column;
 }
 
 .container {
