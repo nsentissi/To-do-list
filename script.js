@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if(ls){
                     ls.forEach(task => {
                         if (task.task ===text.innerText){
-                            task.task = inputField.value
+                            task.task= inputField.value
                         }
                     });
 
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
       
     });
-    const displayTasks = () => {
+        const displayTasks = () => {
         const ls= JSON.parse(localStorage.getItem("tasks"))
         
         if (!ls) return
@@ -165,6 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const btnContainer = document.createElement('div');
         btnContainer.classList.add('btnflex');
         const del = document.createElement('i');
+        del.classList.add('fa-solid' , 'fa-trash');
         const edit = document.createElement('i');
         edit.classList.add('fa-solid', 'fa-pen-to-square')
         container.appendChild(text);
@@ -172,6 +173,83 @@ document.addEventListener('DOMContentLoaded', function () {
         btnContainer.appendChild(del)
         btnContainer.appendChild(edit)
         list.appendChild(container);
+
+        text.addEventListener('click', function(){
+            text.classList.add('checked');
+
+            if (text.classList.contains('checked')) {
+                text.addEventListener('click', function(){
+                    text.classList.toggle('checked');
+                }) 
+            }
+        }) 
+
+        del.classList.add('fa-solid' , 'fa-trash');
+        del.addEventListener('click', function () {
+            const ls = JSON.parse(localStorage.getItem("tasks"));
+            const taskText = text.innerText;
+
+            if (ls) {
+        const updatedTasks = ls.filter(taskObj => taskObj.task !== taskText);
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+            }
+            container.remove(); 
+            
+        });
+        edit.addEventListener('click', function(){
+            const inputField = document.createElement('input');
+                inputField.type = 'text';
+                inputField.value = text.innerText;
+                edit.remove();
+                del.remove();
+
+               
+                inputField.addEventListener('input', function () {
+                    text.innerText = inputField.value;
+                });
+  
+                const replace = document.createElement('i')
+                replace.classList.add('fa-solid', 'fa-check')
+                container.appendChild(replace)
+
+            replace.addEventListener('click', function() {
+                
+                const ls = JSON.parse(localStorage.getItem("tasks"));
+
+                if(ls){
+                    ls.forEach(task => {
+                        if (task.task ===text.innerText){
+                            task.task= inputField.value
+                        }
+                    });
+
+                    localStorage.setItem("tasks", JSON.stringify(ls));
+                }
+
+                if (!inputField.value) {
+                    alert(`You can't replace something with nothing! I created a delete button for that :)`)
+                } else {
+                
+                text.innerHTML= inputField.value
+                inputField.replaceWith(text); 
+                replace.remove();
+                btnContainer.appendChild(del);
+                btnContainer.appendChild(edit);
+                }
+                
+            })
+
+                text.replaceWith(inputField);
+                btnContainer.appendChild(replace);
+        
+                
+                inputField.focus();
+
+                
+                
+
+        });   
+        
         });
       }
 
